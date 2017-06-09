@@ -14,7 +14,7 @@ const s3 = new aws.S3({
 });
 
 router.post('/dataupload', function (req, res) {
-    if(checkForNullOrWhiteSpace(req.query.manufactorer_serial_number))
+    if(checkForNullOrWhiteSpace(req.query.manufacturer_serial_number))
         return res.status(400).send({error: 'Error. No serial number found.'});
 
     let fileName = unixTimestamp.now() * 1000 + "~";
