@@ -21,7 +21,7 @@ router.post('/dataupload', function (req, res) {
     for (let property in req.query) {
         let value = validateValue(req.query[property]);
         if (req.query.hasOwnProperty(property) && value) fileName += "~~" + property + "~" + value;
-        else return res.status(400).send({error: 'Invalid input parameter.'});
+        else return res.status(400).send({error: 'Invalid input parameter. Five or more underscores not allowed.'});
     }
     fileName += ".json"
     let body = JSON.stringify(req.body);
