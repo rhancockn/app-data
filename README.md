@@ -1,5 +1,5 @@
-# app-data
-Stores the Node project to accept json data
+# Description
+This project is designed to accept a POST request with URL paramaters.  The URL paramaters will be used to create a JSON file that will be stored in S3.
 
 
 # Creating an aws.config file
