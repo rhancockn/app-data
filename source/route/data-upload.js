@@ -6,7 +6,11 @@ const router = express.Router();
 const unixTimestamp = require('unix-timestamp');
 const aws = require('aws-sdk');
 const awsConfig = require('../aws.config');
+const ep = new aws.Endpoint('http://localhost:8000/appdata');
+
 const s3 = new aws.S3({
+    endpoint: ep,
+    s3ForcePathStyle: true,
     params: {
         Bucket: awsConfig.aws.bucket
     },
@@ -37,7 +41,7 @@ router.post('/dataupload', function (req, res) {
 const saveFile = (fileName, body ) => {
     return new Promise((resolve, reject) => {
         s3.putObject({
-            Bucket: 'phase-four-app-data',
+            Bucket: 'appdata',
             Key: fileName,
             Body: body
         },(err) => {
